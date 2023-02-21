@@ -9,9 +9,9 @@ const cors = require('cors')
 // const UserModel = require("./schema/user.model");
 // const watchModel = require("./schema/watch.model");
 
-const laptop = require("./router/laptop.route")
+const laptop = require("../router/laptop.route")
 
-const connect = require("./config/mongoose.config")
+const connect = require("../config/mongoose.config")
 
 const app =  express();
 app.use(express.json());
