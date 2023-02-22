@@ -18,6 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 app.use("/", laptop)
 
+
 app.listen(8080,()=>{  
   connect()
   .then(()=>{
