@@ -59,3 +59,5 @@ const laptopPostData = async (req, res) => {
   };
   
   module.exports ={telivisionPostData, appliancePostData, soundbarPostData, watchPostData, laptopPostData}
+
+  
