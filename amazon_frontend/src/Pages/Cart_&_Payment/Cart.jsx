@@ -5,11 +5,11 @@ import "./cart&product.css"
 
 export const Cart = () => {
     const [cartItems, setCartItems] = useState([]);
-    useEffect(()=>{
-        axios.get("https://atmazon.onrender.com/soundbar").then((res)=>{
-            setCartItems(res.data);
-        })
-    },[])
+    // useEffect(()=>{
+    //     axios.get("https://atmazon.onrender.com/soundbar").then((res)=>{
+    //         setCartItems(res.data);
+    //     })
+    // },[])
     const isAuth = true;
     const unAuth = () => {
         return (
