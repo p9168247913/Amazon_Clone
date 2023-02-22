@@ -2,6 +2,7 @@ const laptopModel = require("../schema/laptops.model")
 const applianceModel = require("../schema/appliance.model");
 const soundbarModel = require("../schema/soundbar.model");
 const telivisionModel = require("../schema/telivision.model");
+
 // const UserModel = require("../schema/user.model");
 const watchModel = require("../schema/watch.model");
 
