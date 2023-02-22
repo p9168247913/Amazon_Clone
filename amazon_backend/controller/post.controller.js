@@ -5,6 +5,7 @@ const telivisionModel = require("../schema/telivision.model");
 // const UserModel = require("../schema/user.model");
 const watchModel = require("../schema/watch.model");
 
+
 const laptopPostData = async (req, res) => {
     try {
       const { id, imglink,name,MRP,MRPx,brand,dealprice,dealpricex,discount,discountx,saveprce,saveprcex,cashback,img1,img2,img3,} = req.body;
