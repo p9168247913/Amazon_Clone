@@ -1,3 +1,62 @@
+
+
+
+*{
+  color: #282c34;
+}
+/* Link{
+  color: #282c34;
+} */
+.app_product{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:25px;
+  margin-top: 25px;
+
+}
+.app_product>div{
+  height:480px; width:300px;
+  border: 1px solid grey;
+  margin:auto;
+  line-height: 20px;
+}
+.app_product>div>img{
+  width:80%;
+  height:40%;
+  margin-bottom:-25px;
+  margin-top: 15PX;
+}
+.app_product>h4{
+  margin-top:-15px;
+}
+.sort_btns{
+  display: flex;
+  justify-content: left;
+}
+.sort_btns>button{
+  border: 0;
+  height:25px; 
+  background-color: #282c34;
+  color:antiquewhite;
+  margin-top:25px; margin-left:25px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.buy{
+  height:28px; width:120px;
+  font-weight:bold;
+  border-radius: 4px;
+  background: orange;
+  color:black;
+  border:0;
+  cursor: pointer;
+}
+
+
+
+
+
+
 .App {
   text-align: center;
 }
