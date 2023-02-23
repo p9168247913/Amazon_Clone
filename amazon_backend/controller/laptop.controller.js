@@ -16,7 +16,10 @@ const laptopData = async (req,res)=>{
     }
 }
 
+
+
 const watchData = async (req,res)=>{
+
     try{
         let laptop = await watchModel.find({});
         res.status(200).send(laptop);
