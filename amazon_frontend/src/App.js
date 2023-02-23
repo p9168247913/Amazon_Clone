@@ -1,4 +1,7 @@
+
 import './App.css';
+import { Cart } from './Pages/Cart_&_Payment/Cart';
+import { Footer } from './Components/Footer';
 
 import Navbar from './Components/Navbar';
 import Dashboard from './Dashboard_Nav/Dashboard';
@@ -10,8 +13,8 @@ function App() {
       <Navbar />
       <Dashboard />
       <AllRoutes/>
-
-
+        <Cart/>
+      <Footer />
     </div>
   );
 }
