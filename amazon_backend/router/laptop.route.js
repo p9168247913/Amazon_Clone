@@ -28,6 +28,7 @@ app.get("/soundbar", soundbarData)
 app.get("/telivision", televisionData)
 
 
+
 app.post("/laptop", laptopPostData)
 
 app.post("/watch", watchPostData)

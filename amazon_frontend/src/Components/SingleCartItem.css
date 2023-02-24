@@ -1,0 +1,40 @@
+.singleCartItem {
+    background-color: white;
+    display: grid;
+    grid-template-columns: 0fr 2fr 7fr 1fr;
+    justify-content: space-between;
+    grid-template-rows: auto;
+    padding: 20px 0px 20px 20px;
+    gap: 1%;
+    border-bottom: 0.5px solid rgb(190, 190, 190);
+}
+
+.singleCartItem>div {
+    display: flex;
+    flex-direction: column;
+    gap: 3%;
+}
+
+.singleCartItem>img {
+    width: 100%;
+}
+
+.singleCartItem>div img {
+    width: 60px;
+}
+
+.singleCartItem>div>div {
+    display: grid;
+    grid-template-columns: 20% 3% 12% 3% 25%;
+    align-items: center;
+    width: 70%;
+}
+
+.singleCartItem>div>div * {
+    text-align: center;
+}
+
+.delsave:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
