@@ -14,9 +14,23 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-export const SIdebar = () => {
+export const SIdebar = ({ data }) => {
+  const [brands, setBrands] = useState([]);
+  useEffect(() => {
+    const obj = {};
+    data.map((e) => {
+      if (e.brand) {
+        obj[e.brand] = 1;
+      }
+    });
+    const brandArr = [];
+    for (let key in obj) {
+      brandArr.push(key);
+    }
+    setBrands(brandArr);
+  }, [data]);
   return (
     <>
       <Box
@@ -36,39 +50,24 @@ export const SIdebar = () => {
           fontSize={"xl"}
           textColor={"gray.500"}
         >
-          Categories
+          Brands
         </Heading>
-        <Flex mb="1rem" alignItems="flex-start">
-          <input type="checkbox" />
+        {brands.length > 0 &&
+          brands.map((e) => {
+            return (
+              <Flex mb="1rem" alignItems="flex-start">
+                {/* <label style={{ marginLeft: "50px" }}> {e}</label> */}
 
-          <Text marginLeft={"20px"} marginRight="30px" fontSize="20px">
-            Television
-          </Text>
-        </Flex>
-        <Flex mb="1rem" alignItems="flex-start">
-          <input type="checkbox" />
-          <Text marginLeft={"42px"} fontSize="20px" marginRight="30px">
-            Laptop
-          </Text>
-        </Flex>
-        <Flex mb="1rem">
-          <input type="checkbox" />
-          <Text marginLeft={"30px"} fontSize="20px" marginRight="30px">
-            Watches
-          </Text>
-        </Flex>
-        <Flex mb="1rem">
-          <input type="checkbox" />
-          <Text marginLeft={"16px"} fontSize="20px" marginRight="30px">
-            Applience
-          </Text>
-        </Flex>
-        <Flex mb="1rem">
-          <input type="checkbox" />
-          <Text marginLeft={"20px"} fontSize="20px" marginRight="30px">
-            Soundbar
-          </Text>
-        </Flex>
+                <Checkbox size={"lg"} marginLeft="20px" borderColor="blue.500">
+                  {e}
+                </Checkbox>
+
+                {/* <Text marginLeft={"20px"} marginRight="30px" fontSize="20px">
+                  {e}
+                </Text> */}
+              </Flex>
+            );
+          })}
 
         {/* <Box mb={4}>
           <FormLabel htmlFor="sort">

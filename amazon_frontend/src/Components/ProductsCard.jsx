@@ -11,6 +11,7 @@ import {
   Card,
   Flex,
 } from "@chakra-ui/react";
+import { Link, useNavigate } from "react-router-dom";
 
 export const ProductsCard = ({ id, image, price, brand, name }) => {
   return (
@@ -57,17 +58,19 @@ export const ProductsCard = ({ id, image, price, brand, name }) => {
           </Text>
         </Box>
         <Box mt="auto">
-          <Button
-            background={"cyan.400"}
-            size={"lg"}
-            _hover={{
-              transform: "scale(1.2)",
-              color: "black",
-              background: "darkturquoise",
-            }}
-          >
-            View
-          </Button>
+          <Link to={`/product/${id}`}>
+            <Button
+              background={"cyan.400"}
+              size={"lg"}
+              _hover={{
+                transform: "scale(1.2)",
+                color: "black",
+                background: "darkturquoise",
+              }}
+            >
+              View
+            </Button>
+          </Link>
         </Box>
       </Flex>
     </Flex>

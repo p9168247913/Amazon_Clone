@@ -20,7 +20,7 @@ function Soundbar() {
   return (
     <>
       <Flex marginTop={"40px"}>
-        <SIdebar />
+        <SIdebar data={data} />
 
         <Box
           border={"2px solid green"}
