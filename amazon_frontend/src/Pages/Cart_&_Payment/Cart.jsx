@@ -3,12 +3,17 @@ import axios from "axios";
 import { SingleCartItem } from "../../Components/SingleCartItem";
 import "./cart&product.css"
 import { Button, Checkbox, Text } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 export const Cart = () => {
+    const navigate = useNavigate();
     const [cartTotal, setCartTotal] = useState({ count: 0, total: 0 });
     const [cartItems, setCartItems] = useState([]);
+    const handlePurchasing = (amount) => {
+        navigate(`/pay?cost=${amount}`);
+    }
     useEffect(() => {
-        axios.get("https://atmazon.onrender.com/soundbar").then((res) => {
+        axios.get("https://atmazon.onrender.com/soundbar?brand=LG").then((res) => {
             setCartItems(res.data);
         })
     }, [])
@@ -63,9 +68,11 @@ export const Cart = () => {
                                     <Text>Price</Text>
                                 </div>
                                 {cartItems.map(e => {
-                                    return (
-                                        <SingleCartItem current={cartTotal} setCartTotal={setCartTotal} data={e} key={e._id} />
-                                    )
+                                    if (e.MRP) {
+                                        return (
+                                            <SingleCartItem current={cartTotal} setCartTotal={setCartTotal} data={e} key={e._id} />
+                                        )
+                                    }
                                 })}
                                 <div>
                                     {cartTotal.count > 0 ? <Text align={"right"} fontSize={"xl"}>Subtotal ({cartTotal.count} items): {cartTotal.total}</Text> :
@@ -80,7 +87,7 @@ export const Cart = () => {
                                     </>
                                     :
                                     <Text fontSize={"xl"}>No items selected</Text>}
-                                <Button onClick={() => console.log("Purchasing")} width={"100%"} colorScheme={"yellow"} background={"#fdd407"}>Proceed to Buy</Button>
+                                <Button onClick={() => handlePurchasing(cartTotal.total)} width={"100%"} colorScheme={"yellow"} background={"#fdd407"}>Proceed to Buy</Button>
                             </div>
                         </div>
                 }
