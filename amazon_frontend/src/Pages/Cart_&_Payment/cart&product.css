@@ -188,3 +188,52 @@
     padding: 20px;
     height: auto;
 }
+
+
+
+
+
+
+
+
+
+
+/* Payment Section */
+
+/* Payment Navbar */
+#paynav {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    background: linear-gradient(white 60%, rgb(163, 163, 163));
+}
+
+#paynav * {
+    margin: auto;
+}
+
+/* Payment body */
+
+#paybody {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 2%;
+    width: 75%;
+    margin: auto;
+}
+
+#paybody>div:last-child {
+    border-radius: 10px;
+    border: 1px solid rgb(198, 198, 198);
+}
+
+#paybody>div:last-child {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.finalPricing {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

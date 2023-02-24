@@ -1,9 +1,9 @@
-*{
+/* *{
   color: #282c34;
 }
-/* Link{
+Link{
   color: #282c34;
-} */
+}
 .app_product{
   display:grid;
   grid-template-columns: repeat(4, 1fr);
@@ -91,4 +91,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
