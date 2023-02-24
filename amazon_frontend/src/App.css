@@ -34,7 +34,7 @@ Link{
 .sort_btns>button{
   border: 0;
   height:25px; 
-  /* background-color: #282c34; */
+  background-color: #282c34;
   color:antiquewhite;
   margin-top:25px; margin-left:25px;
   border-radius: 5px;
