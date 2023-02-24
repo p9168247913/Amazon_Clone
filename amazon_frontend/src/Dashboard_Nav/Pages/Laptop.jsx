@@ -41,7 +41,7 @@ function Laptop() {
     // </div>
     <>
       <Flex marginTop={"40px"}>
-        <SIdebar />
+        <SIdebar data={data} />
 
         <Box
           // border={"2px solid green"}

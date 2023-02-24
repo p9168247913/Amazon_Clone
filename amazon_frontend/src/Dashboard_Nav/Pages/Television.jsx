@@ -21,7 +21,7 @@ function Television() {
   // }, []);
 
   const dispatch = useDispatch();
-
+  // const [sentData,setSentData] = useState([]);
   const data = useSelector((store) => {
     return store.productReducer.products;
   });
@@ -33,7 +33,7 @@ function Television() {
   return (
     <>
       <Flex marginTop={"40px"}>
-        <SIdebar />
+        <SIdebar data={data} />
 
         <Box
           // border={"2px solid green"}
