@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Home from '../Components/Home'
+import Homepage from '../Components/Home/Homepage'
 import Appliancaes from '../Dashboard_Nav/Pages/Appliances'
 import Laptop from '../Dashboard_Nav/Pages/Laptop'
 import { SinglePages } from "../Dashboard_Nav/Pages/SinglePages";
@@ -16,7 +16,7 @@ export const AllRoutes = () => {
     return (
         <div>
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Homepage />} />
                 <Route path="/location" element={<Location />} />
                 <Route path="/laptop" element={<Laptop />} />
                 <Route path="/television" element={<Television />} />
