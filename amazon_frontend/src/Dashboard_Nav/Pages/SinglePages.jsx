@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-
+import Flickity from "react-flickity-component"
 import {
     Box,
     chakra,
@@ -20,20 +20,23 @@ import {
     List,
     ListItem,
 } from "@chakra-ui/react";
+import "./SinglePages.css"
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { MdLocalShipping } from "react-icons/md";
+import { setCart } from "../../Redux/AppReducer/action";
 
 export function SinglePages() {
     const { id } = useParams();
-
     const [data, setData] = useState({});
     const product = useSelector((store) => store.productReducer.products);
-
+    const dispatch = useDispatch();
     useEffect(() => {
         const productsData = product.find((el) => el.id === +id);
-        // console.log(productsData);
         setData(productsData);
     });
+    const sendData = () => {
+        dispatch(setCart(data));
+    }
 
     return (
         <Container maxW={"7xl"}>
@@ -43,15 +46,43 @@ export function SinglePages() {
                 py={{ base: 18, md: 24 }}
             >
                 <Flex>
-                    <Image
-                        rounded={"md"}
-                        alt={"product image"}
-                        src={data.imglink}
-                        fit={"cover"}
-                        align={"center"}
-                        w={"100%"}
-                        h={{ base: "100%", sm: "400px", lg: "500px" }}
-                    />
+                    <Flickity
+                        className={'carousel'} // default ''
+                        elementType={'div'} // default 'div'
+                        options={{ initialIndex: 0, autoPlay:true, pauseAutoPlayOnHover:true }} // takes flickity options {}
+                        // disableImagesLoaded={false} // default false
+                        reloadOnUpdate // default false
+                        static // default false
+                    >
+                        <Image
+                            rounded={"md"}
+                            alt={"product image"}
+                            src={data.img1 || data.imglink}
+                            fit={"cover"}
+                            align={"center"}
+                            w={"100%"}
+                            h={{ base: "100%", sm: "400px", lg: "500px" }}
+                        />
+                        <Image
+                            rounded={"md"}
+                            alt={"product image"}
+                            src={data.img2 || data.imglink}
+                            fit={"cover"}
+                            align={"center"}
+                            w={"100%"}
+                            h={{ base: "100%", sm: "400px", lg: "500px" }}
+                        />
+                        <Image
+                            rounded={"md"}
+                            alt={"product image"}
+                            src={data.img3 || data.imglink}
+                            fit={"cover"}
+                            align={"center"}
+                            w={"100%"}
+                            h={{ base: "100%", sm: "400px", lg: "500px" }}
+                        />
+                    </Flickity>
+
                 </Flex>
                 <Stack spacing={{ base: 6, md: 10 }}>
                     <Box as={"header"}>
@@ -180,6 +211,7 @@ export function SinglePages() {
 
                     <Button
                         rounded={"none"}
+                        onClick={sendData}
                         w={"full"}
                         mt={8}
                         size={"lg"}
