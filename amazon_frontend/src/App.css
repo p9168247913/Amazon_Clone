@@ -4,7 +4,7 @@
 /* Link{
   color: #282c34;
 } */
-.app_product{
+/* .app_product{
   display:grid;
   grid-template-columns: repeat(4, 1fr);
   gap:25px;
@@ -34,12 +34,12 @@
   border: 0;
   height:25px; 
   /* background-color: #282c34; */
-  color:antiquewhite;
+  /* color:antiquewhite;
   margin-top:25px; margin-left:25px;
   border-radius: 5px;
   cursor: pointer;
-}
-.buy{
+} */
+/* .buy{
   height:28px; width:120px;
   font-weight:bold;
   border-radius: 4px;
@@ -47,7 +47,7 @@
   color:black;
   border:0;
   cursor: pointer;
-}
+} */ */
 
 
 

@@ -13,7 +13,6 @@ export const AllRoutes = () => {
     <div>
       <Routes>
         <Route path="/" element={<Home />} />
-
         <Route path="/location" element={<Location />} />
         <Route path="/laptop" element={<Laptop />} />
         <Route path="/television" element={<Television />} />
