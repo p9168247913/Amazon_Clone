@@ -10,6 +10,7 @@ function App() {
             <Dashboard />
             <AllRoutes />
             <Footer />
+
         </div>
     );
 }
