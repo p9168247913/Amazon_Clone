@@ -12,6 +12,7 @@ import { Payment } from '../Pages/Cart_&_Payment/Payment'
 import { Location } from '../Pages/Location'
 
 export const AllRoutes = () => {
+
     return (
         <div>
             <Routes>
@@ -24,9 +25,10 @@ export const AllRoutes = () => {
                 <Route path="/soundbar" element={<Soundbar />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/pay" element={<Payment />} />
-        <Route path={"/product/:id"} element={<SinglePages />} />
+                <Route path={"/product/:id"} element={<SinglePages />} />
                 <Route path="*" element={<h1>404 Page not found</h1>} />
             </Routes>
         </div>
     )
 }
+

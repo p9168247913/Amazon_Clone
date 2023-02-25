@@ -132,6 +132,8 @@
 #emptyCart {
     padding: 25px 20px;
     width: 70%;
+    margin-bottom: 700px;
+    margin-top: 30px;
 }
 
 #emptyCart>p:first-child {
@@ -144,11 +146,11 @@
     font-weight: 500;
 }
 
-#emptyCart>p>span {
+#emptyCart>p>a {
     color: #0d788b;
 }
 
-#emptyCart>p>span:hover {
+#emptyCart>p>a:hover {
     cursor: pointer;
     color: rgb(197, 70, 70);
 }

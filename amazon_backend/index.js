@@ -1,6 +1,8 @@
 require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
+
 const cors = require('cors')
 // const applianceModel = require("./schema/appliance.model");
 // const laptopModel = require("./schema/laptops.model");

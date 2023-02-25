@@ -9,6 +9,8 @@ const app = express.Router();
 
 app.get("/laptop", laptopData)
 
+
+
 // watch
 
 app.get("/watch", watchData)

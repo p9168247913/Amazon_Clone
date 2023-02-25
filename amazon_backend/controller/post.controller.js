@@ -48,6 +48,8 @@ const laptopPostData = async (req, res) => {
       res.status(401).send("Invalid api");
     }
   };
+
+  
  const telivisionPostData = async (req, res) => {
     try {
       const { id, imglink,name,MRP,MRPx,brand,dealprice,dealpricex,discount,discountx,saveprce,saveprcex,cashback,img1,img2,img3} = req.body;

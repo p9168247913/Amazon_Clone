@@ -2,22 +2,26 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { SingleCartItem } from "../../Components/SingleCartItem";
 import "./cart&product.css"
-import { Button, Checkbox, Text } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+import { Box, Button, Checkbox, Collapse, Text, useDisclosure } from "@chakra-ui/react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteCart } from "../../Redux/AppReducer/action";
 
 export const Cart = () => {
     const navigate = useNavigate();
     const [cartTotal, setCartTotal] = useState({ count: 0, total: 0 });
-    const [cartItems, setCartItems] = useState([]);
+    const cartItems = useSelector(store => store.productReducer.cart);
+    const dispatch = useDispatch();
+    const { isOpen, onToggle } = useDisclosure()
     const handlePurchasing = (amount) => {
         navigate(`/pay?cost=${amount}`);
     }
-    useEffect(() => {
-        axios.get("https://atmazon.onrender.com/soundbar?brand=LG").then((res) => {
-            setCartItems(res.data);
-        })
-    }, [])
     const isAuth = true;
+    const handleDelete = (index) => {
+        let items = [...cartItems];
+        items.splice(index, 1);
+        dispatch(deleteCart(items));
+    }
     const unAuth = () => {
         return (
             <div id="unAuth">
@@ -54,7 +58,7 @@ export const Cart = () => {
                     cartItems.length === 0 ?
                         <div id="emptyCart">
                             <p>Your Amazon Cart is empty.</p>
-                            <p>Check your Saved for later items or <span>continue shopping</span>.</p>
+                            <p>Check your Saved for later items or <Link to={"/"}>continue shopping</Link>.</p>
                         </div>
                         :
                         <div id="itemsInCart">
@@ -70,7 +74,7 @@ export const Cart = () => {
                                 {cartItems.map(e => {
                                     if (e.MRP) {
                                         return (
-                                            <SingleCartItem current={cartTotal} setCartTotal={setCartTotal} data={e} key={e._id} />
+                                            <SingleCartItem handleDelete={handleDelete} index={cartItems.indexOf(e)} current={cartTotal} setCartTotal={setCartTotal} data={e} key={e._id} />
                                         )
                                     }
                                 })}
@@ -80,14 +84,27 @@ export const Cart = () => {
                                 </div>
                             </div>
                             <div>
-                                {true ?
+                                {cartTotal.count > 0 ?
                                     <>
                                         <Text fontSize={"xl"}>Subtotal ({cartTotal.count} items): {cartTotal.total}</Text>
                                         <Checkbox>This order contains a gift</Checkbox>
                                     </>
                                     :
                                     <Text fontSize={"xl"}>No items selected</Text>}
-                                <Button onClick={() => handlePurchasing(cartTotal.total)} width={"100%"} colorScheme={"yellow"} background={"#fdd407"}>Proceed to Buy</Button>
+                                <Button onClick={cartTotal.count > 0 ? () => handlePurchasing(cartTotal.total) : () => onToggle()} width={"100%"} colorScheme={"yellow"} background={"#fdd407"}>Proceed to Buy</Button>
+                                <Collapse in={isOpen} animateOpacity>
+                                    <Box
+                                        padding="10px"
+                                        textAlign="center"
+                                        color='white'
+                                        mt='4'
+                                        bg='red'
+                                        rounded='md'
+                                        shadow='md'
+                                    >
+                                        <Text fontWeight="medium">Please select at least 1 item</Text>
+                                    </Box>
+                                </Collapse>
                             </div>
                         </div>
                 }
@@ -96,7 +113,6 @@ export const Cart = () => {
     }
     return (
         <div id="cart">
-            <h1>Cart</h1>
             {isAuth ? Auth() : unAuth()}
         </div>
     )
