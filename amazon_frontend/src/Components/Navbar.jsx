@@ -43,8 +43,7 @@ function Navbar() {
             {/* SearchBar Functionality */}
 
             <Link to="/language">Language</Link>
-            <Link to="/login">Login</Link>
-            <Link to="/login">Admin Login</Link>
+            <Link to="/login">Login</Link> 
             <Link to="/returns">Returns</Link>
 
 
