@@ -2,7 +2,7 @@ import { Checkbox, Select, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import "./SingleCartItem.css"
 
-export const SingleCartItem = ({ data, setCartTotal, current }) => {
+export const SingleCartItem = ({ data, setCartTotal, current, handleDelete, index }) => {
     const [prevQuantity, setPrevQuantity] = useState(1);
     const [check, setCheck] = useState(false);
     const [itemTotal, setItemTotal] = useState(data.MRP);
@@ -54,7 +54,7 @@ export const SingleCartItem = ({ data, setCartTotal, current }) => {
                         <option value={5}>Qty: 5</option>
                     </Select>
                     <p>|</p>
-                    <Text className="delsave" color={"teal"}>Delete</Text>
+                    <Text className="delsave" onClick={()=>handleDelete(index)} color={"teal"}>Delete</Text>
                     <p>|</p>
                     <Text className="delsave" color={"teal"} >Save for later</Text>
                 </div>

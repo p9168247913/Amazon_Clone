@@ -1,5 +1,5 @@
 import axios from "axios"
-import { GET_PRODUCT_FAILURE, GET_PRODUCT_REQUEST, GET_PRODUCT_SUCCESS } from "./actionTypes"
+import { DELETE_CART, GET_PRODUCT_FAILURE, GET_PRODUCT_REQUEST, GET_PRODUCT_SUCCESS, SET_CART } from "./actionTypes"
 
 
 
@@ -16,7 +16,13 @@ export const productFailure = () => {
     return { type: GET_PRODUCT_FAILURE }
 }
 
+export const setCartProducts = (payload) => {
+    return {type:SET_CART, payload}
+}
 
+export const deleteCartProducts = (payload) => {
+    return {type:DELETE_CART, payload}
+}
 
 export const getProduct = (params) => (dispatch) => {
     dispatch(productRequest())
@@ -28,4 +34,12 @@ export const getProduct = (params) => (dispatch) => {
         .catch((err) => {
             dispatch(productFailure())
         })
+}
+
+export const setCart = (data) => (dispatch) => {
+    dispatch(setCartProducts(data));
+}
+
+export const deleteCart = (data) => (dispatch) => {
+    dispatch(deleteCartProducts(data));
 }
