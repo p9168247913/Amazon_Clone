@@ -25,7 +25,7 @@ function Laptop() {
       return(
         <div key={e._id}>
         <img src={e.imglink} alt={e.name} />
-        <h4>{e.name}</h4>
+        <h4>{e.name}</h4> 
         <h4>{e.brand}</h4>
         <h4>{`₹${e.MRP}`}</h4>
         <button className="buy">Buy Now</button>
