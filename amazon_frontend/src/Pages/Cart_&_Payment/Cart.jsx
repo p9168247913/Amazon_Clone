@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState } from "react";
 import { SingleCartItem } from "../../Components/SingleCartItem";
 import "./cart&product.css"
 import { Box, Button, Checkbox, Collapse, Text, useDisclosure } from "@chakra-ui/react";
@@ -16,7 +15,7 @@ export const Cart = () => {
     const handlePurchasing = (amount) => {
         navigate(`/pay?cost=${amount}`);
     }
-    const isAuth = true;
+    const isAuth = useSelector(store => store.authReducer.isAuth);
     const handleDelete = (index) => {
         let items = [...cartItems];
         items.splice(index, 1);
