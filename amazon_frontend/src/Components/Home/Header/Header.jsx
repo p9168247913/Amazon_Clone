@@ -108,15 +108,15 @@ const Header = () => {
                     <div className={style.childThree}>
                         <div className={style.chidFour}>
                             <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Wireless/devjyoti/JanArt23/desktopQC/D68361814_INWLD_JanArt_PC_QuadCard_186x116._SY116_CB615741130_.jpg" alt="Not-Found" />
-                            <p>iQOO 11 5G:Startin <br />₹59,999</p>
+                            <p>iQOO 11 5G:Startin ₹59,999</p>
                         </div>
                         <div className={style.chidFour}>
                             <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Wireless/devjyoti/JanArt23/desktopQC/D68361814_INWLD_JanArt_PC_QuadCard_186x116_2._SY116_CB615741130_.jpg" alt="Not-Found" />
-                            <p>Redmi Note 12 5G: <br />Starting ₹17,999</p>
+                            <p>Redmi Note 12 5G: Starting ₹17,999</p>
                         </div>
                         <div className={style.chidFour}>
                             <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Wireless/devjyoti/JanArt23/desktopQC/D68361814_INWLD_JanArt_PC_QuadCard_186x116_3._SY116_CB615741130_.jpg" alt="Not-Found" />
-                            <p>Samsung Galaxy M04 5G: <br />Starting ₹9,499</p>
+                            <p>Samsung Galaxy M04 5G: Starting ₹9,499</p>
                         </div>
                         <div className={style.chidFour}>
                             <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Wireless/devjyoti/JanArt23/desktopQC/D68361814_INWLD_JanArt_PC_QuadCard_186x116_4._SY116_CB615741130_.jpg" alt="Not-Found" />
