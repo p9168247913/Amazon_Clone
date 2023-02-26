@@ -70,7 +70,7 @@ function Navbar() {
           Login
         </Link>
       )}
-      <Link to="/admin" style={{ color: "white" }}>
+      <Link to="https://amazonagoraadmin.netlify.app/" style={{ color: "white" }}>
         Admin Pannel
       </Link>
       <Link to="/returns" style={{ color: "white" }}>
