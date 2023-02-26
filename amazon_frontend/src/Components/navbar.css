@@ -1,5 +1,5 @@
 .logopng{
-    height:45px; width:120px;
+    height:65px; width:120px;
 }
 input{
     height:30px; width:520px;
@@ -8,5 +8,7 @@ input{
 }
 a{
     text-decoration:none;
-    color:whitesmoke;
+    font-family: Arial,sans-serif;
+    font-Size:15px;
+    font-weight: bold;
 }
