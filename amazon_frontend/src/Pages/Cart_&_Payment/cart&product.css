@@ -95,7 +95,7 @@
     font-size: 11px;
 }
 
-#unAuth>div:last-child>div>button {
+#unAuth>div:last-child>div button {
     margin: 5px 0px;
     background-color: #fdd407;
     border: 0px;

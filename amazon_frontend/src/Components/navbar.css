@@ -1,14 +1,31 @@
-.logopng{
-    height:65px; width:120px;
-}
-input{
-    height:30px; width:520px;
-    border-radius: 5px;
-    outline:none;
-}
-a{
-    text-decoration:none;
-    font-family: Arial,sans-serif;
-    font-Size:15px;
+a {
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-Size: 15px;
     font-weight: bold;
 }
+
+#nav {
+    display: flex;
+    align-items: center;
+}
+
+#searchBarr {
+    display: flex;
+    width: 40%;
+    align-items: center;
+}
+
+#searchBarr>input {
+    border-radius: 7px 0px 0px 7px;
+}
+
+#searchBarr>svg {
+    padding: 7px;
+    border-radius: 0px 7px 7px 0px;
+    width: 6%;
+}
+
+/* <input type="text" placeholder="Search For Products" />
+                <button ><img src="https://cdn-icons-png.flaticon.com/512/95/95643.png"
+                    alt="glass" style={{ height: "100%", width: "100%" }} /></button> */
