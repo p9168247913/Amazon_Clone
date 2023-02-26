@@ -30,7 +30,7 @@ export const Cart = () => {
                         <h2>Your Amazon Cart is empty</h2>
                         <p>Shop today's deals</p>
                         <div>
-                            <button><p>Sign in to your account</p></button>
+                            <Link to="/login"><button><p>Sign in to your account</p></button></Link>
                             <button><p>Sign up now</p></button>
                         </div>
                     </div>
@@ -43,7 +43,7 @@ export const Cart = () => {
                 <div>
                     <div>
                         <p>See personalized recommendations</p>
-                        <button><b>Sign in</b></button>
+                        <Link to="/login"><button><b>Sign in</b></button></Link>
                         <p>New customer? <span>Start here</span></p>
                     </div>
                 </div>

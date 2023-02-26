@@ -12,7 +12,7 @@ import {
     useColorModeValue,
     Image,
 } from '@chakra-ui/react';
-import {useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { login } from '../Redux/AuthReducer/action';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -21,16 +21,20 @@ export const Login = () => {
     const dispatch = useDispatch();
     const location = useLocation();
     const navigate = useNavigate();
-    const [email,setEmail] = useState("eve.holt@reqres.in")
-    const [pass,setPass] = useState("cityslicka");
+    const [email, setEmail] = useState("eve.holt@reqres.in")
+    const [pass, setPass] = useState("cityslicka");
     const handleLogin = () => {
         let data = {
             email,
-            password:pass
+            password: pass
         }
         dispatch(login(data)).then(() => {
-            navigate(location.state, { replace: true });
-          });
+            if (location.state === null) {
+                navigate("/", { replace: true });
+            } else {
+                navigate(location.state, { replace: true });
+            }
+        });
     }
     return (
         <Flex
@@ -38,7 +42,7 @@ export const Login = () => {
             justify={'center'}
             bg={useColorModeValue('gray.50', 'gray.800')}>
             <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
-                < Image width={"130px"} m={"auto"} mb={"-40px"} mt={"-40px"} src='https://i.ibb.co/PhgTtJL/amazon.png' alt='https://i.ibb.co/PhgTtJL/amazon.png'/>
+                < Image width={"130px"} m={"auto"} mb={"-40px"} mt={"-40px"} src='https://i.ibb.co/PhgTtJL/amazon.png' alt='https://i.ibb.co/PhgTtJL/amazon.png' />
                 <Stack align={'center'}>
                 </Stack>
                 <Box
@@ -50,11 +54,11 @@ export const Login = () => {
                     <Stack spacing={4}>
                         <FormControl id="email">
                             <FormLabel>Email address</FormLabel>
-                            <Input type="email" value={email} onChange={e=>setEmail(e.target.value)} />
+                            <Input type="email" value={email} onChange={e => setEmail(e.target.value)} />
                         </FormControl>
                         <FormControl id="password">
                             <FormLabel>Password <Link fontWeight={"normal"} color={'blue.400'}>Forgot password?</Link></FormLabel>
-                            <Input type="password" value={pass} onChange={e=>setPass(e.target.value)}/>
+                            <Input type="password" value={pass} onChange={e => setPass(e.target.value)} />
                         </FormControl>
                         <Stack spacing={10}>
                             <Stack
