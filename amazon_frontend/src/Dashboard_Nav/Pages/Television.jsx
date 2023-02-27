@@ -2,23 +2,32 @@ import { Box, Card, Flex, Grid, Text } from "@chakra-ui/react";
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { ProductsCard } from "../../Components/ProductsCard";
 import { SIdebar } from "../../Components/SIdebar";
-import { getProduct } from "../../Redux/AppReducer/action";
+import { getBrands, getProduct } from "../../Redux/AppReducer/action";
 
 function Television() {
-
+    const location = useLocation();
+    const [searchParams] = useSearchParams();
+    const [urlBrands, setUrlBrands] = useState([]);
     const dispatch = useDispatch();
-    // const [sentData,setSentData] = useState([]);
     const data = useSelector((store) => {
         return store.productReducer.products;
     });
     const loading = useSelector(store => store.productReducer.isLoading);
     const error = useSelector(store => store.productReducer.isError);
-
+    const paramsObj = {
+        params: {
+            brand: searchParams.getAll("brand"),
+            _sort: searchParams.get("order") && "MRP",
+            _order: searchParams.get("order")
+        }
+    }
     useEffect(() => {
-        dispatch(getProduct("telivision"));
-    }, []);
+        dispatch(getProduct("television", paramsObj));
+        getBrands("television", setUrlBrands);
+    }, [location.search]);
     if (loading) {
         return (
             <div style={{ textAlign: "center", margin: "300px" }}>
@@ -38,7 +47,7 @@ function Television() {
     return (
         <>
             <Flex marginTop={"40px"}>
-                <SIdebar data={data} />
+                <SIdebar data={urlBrands} />
 
                 <Box
                     // border={"2px solid green"}
