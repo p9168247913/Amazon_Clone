@@ -25,7 +25,7 @@ export const AllRoutes = () => {
                 <Route path="/soundbar" element={<Soundbar />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/pay" element={<Payment />} />
-                <Route path={"/product/:id"} element={<PrivateRoute><SinglePages /> </PrivateRoute>} />
+                <Route path={"/:id"} element={<PrivateRoute><SinglePages /> </PrivateRoute>} />
                 <Route path='/login' element={<Login />} />
                 <Route path="*" element={<h1>404 Page not found</h1>} />
             </Routes>

@@ -17,23 +17,29 @@ export const productFailure = () => {
 }
 
 export const setCartProducts = (payload) => {
-    return {type:SET_CART, payload}
+    return { type: SET_CART, payload }
 }
 
 export const deleteCartProducts = (payload) => {
-    return {type:DELETE_CART, payload}
+    return { type: DELETE_CART, payload }
 }
 
-export const getProduct = (params) => (dispatch) => {
+export const getProduct = (category, params) => (dispatch) => {
     dispatch(productRequest())
     console.log("Request")
-    axios.get(`https://atmazon.onrender.com/${params}`).then((res) => {
+    axios.get(`https://elated-lime-hippo.cyclic.app/products?category=${category}`, params).then((res) => {
         dispatch(getProductSuccess(res.data))
-        console.log("success")
+        console.log("success", params)
     })
         .catch((err) => {
             dispatch(productFailure())
         })
+}
+
+export const getBrands = (category, setBrands) => {
+    axios.get(`https://elated-lime-hippo.cyclic.app/products?category=${category}`).then((res) => {
+        setBrands(res.data);
+    })
 }
 
 export const setCart = (data) => (dispatch) => {

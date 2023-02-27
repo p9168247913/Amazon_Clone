@@ -56,7 +56,7 @@ export const ProductsCard = ({ id, image, price, brand, name }) => {
                     </Text>
                 </Box>
                 <Box mt="auto">
-                    <Link to={`/product/${id}`}>
+                    <Link to={`/${id}`}>
                         <Button
                             background={"cyan.400"}
                             width={"100%"}
