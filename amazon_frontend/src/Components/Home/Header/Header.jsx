@@ -1,5 +1,6 @@
 import React from 'react'
 import "./Header.css";
+import {Link} from "react-router-dom";
 import style from "./Headertwo.module.css"
 const Header = () => {
     
@@ -70,10 +71,10 @@ const Header = () => {
                         <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img23/Fashion/Event/Gateway/JanART/BTF/PCQC/M-shoes-186-116._SY116_CB615519226_.jpg" alt="Not-Found" />
                         <p>Footwear</p>
                     </div>
-                    <div className={style.chidFour}>
+                    <Link to={"/watch"} className={style.chidFour}>
                         <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img23/Fashion/Event/Gateway/JanART/BTF/PCQC/M-watch-186-116._SY116_CB615519226_.jpg" alt="Not-Found" />
-                        <p>Watches</p>
-                    </div>
+                        <p style={{fontWeight:"lighter"}}>Watches</p>
+                    </Link>
                     <div className={style.chidFour}>
                         <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img23/Fashion/Event/Gateway/JanART/BTF/PCQC/M-luggage-186-116._SY116_CB615519226_.jpg" alt="Not-Found" />
                         <p>Bags & luggage</p>
@@ -145,7 +146,7 @@ const Header = () => {
                             <p>Washing machines</p>
                         </div>
                     </div>
-                    <p>See all offers</p>
+                    <Link to={"/appliances"}><p style={{color:"blue", fontWeight:"lighter"}}>See all offers</p></Link>
             </div>
         </div>
 
