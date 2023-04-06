@@ -1,0 +1,36 @@
+.main{
+    border: 1px solid red;
+    width: 50%;
+    margin: auto;
+    box-shadow: 0 0 10px grey;
+    margin-top: 6rem;
+    border-radius: 20px;
+}
+.signup{
+    display: flex;
+    margin: auto;
+    width: 30%;
+    justify-content: space-between;
+}
+.signup>h4+h4{
+    color: blue;
+    
+}
+.signup>h4+h4:hover{
+    cursor: pointer;
+}
+
+.inp1{
+    display: flex;
+    margin: auto;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    padding-left: 6rem;
+}
+.inp1 input{
+    height: 30px;
+    width: 40%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+}

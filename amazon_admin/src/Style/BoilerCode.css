@@ -1,0 +1,23 @@
+.proData-container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+    margin: 0 1rem;
+    margin-top: .7rem;
+}
+
+.proData-container .boliderCode-contaier{
+    box-sizing: border-box;
+    padding: 0 1rem 1rem;
+    box-shadow: 0 0 8px 3px rgb(218, 217, 217);
+    border-radius: 10px;
+
+}
+.proData-container .boliderCode-contaier div>img{
+    width: 100%;
+    height: 350px;
+}
+.boliderCode-contaier{
+    padding-bottom: 10px;
+    height: "60px";
+}
