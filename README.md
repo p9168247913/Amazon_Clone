@@ -1,4 +1,4 @@
-# Noxious-Kitty-3961
+# Amazone_Clone
 <img align="right" src="https://user-images.githubusercontent.com/103588575/222078072-b29c4bec-b7a3-44ec-9ff9-9157546db294.png" width="320px" />
 <h1> Project name: Agora</h1>
 
