@@ -1,11 +1,10 @@
 const express = require("express")
 const jwt = require("jsonwebtoken");
-const laptopModel = require("../models/laptops.model");
+const soundbarModel = require("../models/soundbar.model");
+const soundRouter = express.Router()
 
 
-const laptopRouter = express.Router()
-
-laptopRouter.get("/", async (req, res) => {
+soundRouter.get("/", async (req, res) => {
     let token = req.headers.authorization;
     let querry = req.body;
     if (querry.device) {
@@ -13,7 +12,7 @@ laptopRouter.get("/", async (req, res) => {
             const decode = jwt.verify(token, process.env.key)
             if (decode) {
                 const userId = decode.userId;
-                const data = await laptopModel.find({ userId: userId })
+                const data = await soundbarModel.find({ userId: userId })
                 let filteredData = data.filter((e) => {
                     return e.device === querry.device
                 });
@@ -26,18 +25,18 @@ laptopRouter.get("/", async (req, res) => {
         }
     } else {
         try {
-            const data = await laptopModel.find()
-            res.send(data );
+            const data = await soundbarModel.find()
+            res.send( data );
         } catch (e) {
             res.send(e)
         }
     }
 })
 
-laptopRouter.post("/add", async (req, res) => {
+soundRouter.post("/add", async (req, res) => {
     const payload = req.body
     try {
-        const newPost = new laptopModel(payload);
+        const newPost = new soundbarModel(payload);
         await newPost.save()
         res.send({ msg: "Post Saved", New_Post: newPost })
     } catch (e) {
@@ -45,26 +44,26 @@ laptopRouter.post("/add", async (req, res) => {
     }
 })
 
-laptopRouter.patch("/update/:id", async(req,res)=>{
+soundRouter.patch("/update/:id", async(req,res)=>{
     const payload=req.body
     const id=req.params.id;
     try{
-        await laptopModel.findByIdAndUpdate(id,{...payload});
-        let UpdatePost = await laptopModel.findById(id)
+        await soundbarModel.findByIdAndUpdate(id,{...payload});
+        let UpdatePost = await soundbarModel.findById(id)
         res.send({msg:"Post Updated", Updated_Post:UpdatePost})
     }catch(e){
         res.send({"msg":e.message})
     }
 })
 
-laptopRouter.delete("/delete/:id", async(req,res)=>{
+soundRouter.delete("/delete/:id", async(req,res)=>{
     const id=req.params.id;
     try{
-        await laptopModel.findByIdAndDelete(id);
+        await soundbarModel.findByIdAndDelete(id);
         res.send({msg:"Post Deleted"})
     }catch(e){
         res.send({"msg":e.message})
     }
 })
 
-module.exports = laptopRouter
+module.exports = soundRouter
