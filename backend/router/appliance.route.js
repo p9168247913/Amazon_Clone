@@ -1,11 +1,11 @@
 const express = require("express")
 const jwt = require("jsonwebtoken");
-const laptopModel = require("../models/laptops.model");
+const applianceModel = require("../models/appliance.model");
 
 
-const laptopRouter = express.Router()
+const applianceRouter = express.Router()
 
-laptopRouter.get("/", async (req, res) => {
+applianceRouter.get("/", async (req, res) => {
     let token = req.headers.authorization;
     let querry = req.body;
     if (querry.device) {
@@ -13,7 +13,7 @@ laptopRouter.get("/", async (req, res) => {
             const decode = jwt.verify(token, process.env.key)
             if (decode) {
                 const userId = decode.userId;
-                const data = await laptopModel.find({ userId: userId })
+                const data = await applianceModel.find({ userId: userId })
                 let filteredData = data.filter((e) => {
                     return e.device === querry.device
                 });
@@ -26,7 +26,7 @@ laptopRouter.get("/", async (req, res) => {
         }
     } else {
         try {
-            const data = await laptopModel.find()
+            const data = await applianceModel.find()
             res.send(data );
         } catch (e) {
             res.send(e)
@@ -34,10 +34,10 @@ laptopRouter.get("/", async (req, res) => {
     }
 })
 
-laptopRouter.post("/add", async (req, res) => {
+applianceRouter.post("/add", async (req, res) => {
     const payload = req.body
     try {
-        const newPost = new laptopModel(payload);
+        const newPost = new applianceModel(payload);
         await newPost.save()
         res.send({ msg: "Post Saved", New_Post: newPost })
     } catch (e) {
@@ -45,26 +45,26 @@ laptopRouter.post("/add", async (req, res) => {
     }
 })
 
-laptopRouter.patch("/update/:id", async(req,res)=>{
+applianceRouter.patch("/update/:id", async(req,res)=>{
     const payload=req.body
     const id=req.params.id;
     try{
-        await laptopModel.findByIdAndUpdate(id,{...payload});
-        let UpdatePost = await laptopModel.findById(id)
+        await applianceModel.findByIdAndUpdate(id,{...payload});
+        let UpdatePost = await applianceModel.findById(id)
         res.send({msg:"Post Updated", Updated_Post:UpdatePost})
     }catch(e){
         res.send({"msg":e.message})
     }
 })
 
-laptopRouter.delete("/delete/:id", async(req,res)=>{
+applianceRouter.delete("/delete/:id", async(req,res)=>{
     const id=req.params.id;
     try{
-        await laptopModel.findByIdAndDelete(id);
+        await applianceModel.findByIdAndDelete(id);
         res.send({msg:"Post Deleted"})
     }catch(e){
         res.send({"msg":e.message})
     }
 })
 
-module.exports = laptopRouter
+module.exports = applianceRouter

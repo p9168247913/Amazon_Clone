@@ -1,32 +1,43 @@
 require("dotenv").config();
 const express = require("express");
-const mongoose = require("mongoose");
-const cors = require('cors')
-// const applianceModel = require("./schema/appliance.model");
-// const laptopModel = require("./schema/laptops.model");
-// const soundbarModel = require("./schema/soundbar.model");
-// const telivisionModel = require("./schema/telivision.model");
-// const UserModel = require("./schema/user.model");
-// const watchModel = require("./schema/watch.model");
+const cors = require('cors');
+const connection = require("./config/db");
+const laptopRouter = require("./router/laptop.route");
+const watchRouter = require("./router/watch.route");
+const applianceRouter = require("./router/appliance.route");
+const soundRouter = require("./router/soundbar.route");
+const telivisionRouter = require("./router/telivision.route");
+const cartRouter = require("./router/cart.route");
+const { auth } = require("./middlewares/auth");
+const orderRouter = require("./router/order.route");
+const userRouter = require("./router/user.route");
 
-const laptop = require("./router/laptop.route")
-
-const connect = require("./config/mongoose.config")
 
 const app =  express();
 app.use(cors({origin:"*"}))
 app.use(express.json());
 
 app.use(express.urlencoded({extended:true}))
-app.use("/", laptop)
+app.use("/user", userRouter)
+app.use("/laptop", laptopRouter)
+app.use("/watch", watchRouter)
+app.use("/appliance", applianceRouter)
+app.use("/soundbar", soundRouter)
+app.use("/telivision", telivisionRouter)
 
 
-app.listen(8080,()=>{  
-  connect()
-  .then(()=>{
-    console.log("Connected to Database")
-  }).catch((e)=>{
-    console.log(e)
-  })
-  console.log("Server is running on port 8080")
-})
+app.use(auth)
+app.use("/cart" ,cartRouter)
+app.use('/order', orderRouter)
+
+
+app.listen(process.env.port, async () => {
+  try {
+    await connection;
+    console.log("Connected to Mongo Atlas");
+  } catch (err) {
+    console.log(err)
+    console.log("Couldn't connect to Mongo Atlas");
+  }
+  console.log(`Server started on port ${process.env.port}`);
+});
