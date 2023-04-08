@@ -5,7 +5,9 @@ import { logout } from "../Redux/AuthReducer/action";
 import { SearchIcon } from "@chakra-ui/icons";
 import "./navbar.css";
 function Navbar() {
-    const isAuth = useSelector((store) => store.authReducer.isAuth);
+    const {isAuth} = useSelector(state=>state.Loginreducer);
+
+    
     return (
         <div
             id="nav"

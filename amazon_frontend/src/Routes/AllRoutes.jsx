@@ -11,6 +11,7 @@ import Watch from '../Dashboard_Nav/Pages/Watch'
 import { Cart } from '../Pages/Cart_&_Payment/Cart'
 import { Payment } from '../Pages/Cart_&_Payment/Payment'
 import { Login } from '../Pages/Login'
+import { SignupPage } from '../Pages/SignupPage'
 
 export const AllRoutes = () => {
 
@@ -27,6 +28,7 @@ export const AllRoutes = () => {
                 <Route path="/pay" element={<Payment />} />
                 <Route path={"/:id"} element={<PrivateRoute><SinglePages /> </PrivateRoute>} />
                 <Route path='/login' element={<Login />} />
+                <Route  path="/signup" element={<SignupPage/>}/>
                 <Route path="*" element={<h1>404 Page not found</h1>} />
             </Routes>
         </div>

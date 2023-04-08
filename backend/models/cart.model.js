@@ -19,6 +19,7 @@ const cartSchema = new mongoose.Schema({
     settingtype: String,
     totalnum: String,
     totalweight: String,
+    userId:String,
 })
 
 const CartModel = mongoose.model('cart', cartSchema);

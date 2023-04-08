@@ -12,30 +12,36 @@ import {
     useColorModeValue,
     Image,
 } from '@chakra-ui/react';
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
-import { login } from '../Redux/AuthReducer/action';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+// import { login } from '../Redux/AuthReducer/action';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { userlogindata } from '../Redux/UserLogin/action';
 
 export const Login = () => {
     const dispatch = useDispatch();
     const location = useLocation();
     const navigate = useNavigate();
-    const [email, setEmail] = useState("eve.holt@reqres.in")
-    const [pass, setPass] = useState("cityslicka");
+    const [email, setEmail] = useState("");
+    const [pass, setPass] = useState("");
+    const {isAuth} = useSelector(state=>state.Loginreducer);
+
+   
+   
     const handleLogin = () => {
         let data = {
-            email,
+            email : email,
             password: pass
         }
-        dispatch(login(data)).then(() => {
-            if (location.state === null) {
-                navigate("/", { replace: true });
-            } else {
-                navigate(location.state, { replace: true });
-            }
-        });
+        dispatch(userlogindata(data))
     }
+
+
+    useEffect(()=>{
+        if(isAuth){
+            navigate("/")
+        }
+    },[isAuth])
     return (
         <Flex
             align={'center'}

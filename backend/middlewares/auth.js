@@ -3,12 +3,12 @@ var jwt = require("jsonwebtoken");
 const auth = async (req, res, next) => {
   const token = req.headers.authorization;
   if (token) {
-    const decoded = await jwt.verify(token, "karatlogin");
+    const decoded = await jwt.verify(token, process.env.key);
     if (decoded) {
-      const userID = decoded.userID;
+      const userId = decoded.userId;
       req.userDetails = decoded;
       console.log(decoded);
-      req.body.userID = userID;
+      req.body.userId = userId;
       next();
     } else {
       res.send({ msg: "please login" });
