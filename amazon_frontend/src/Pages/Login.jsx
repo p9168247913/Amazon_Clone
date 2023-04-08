@@ -12,6 +12,7 @@ import {
     useColorModeValue,
     Image,
 } from '@chakra-ui/react';
+import { useToast } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 // import { login } from '../Redux/AuthReducer/action';
@@ -19,76 +20,64 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { userlogindata } from '../Redux/UserLogin/action';
 
 export const Login = () => {
+    const toast = useToast()
     const dispatch = useDispatch();
     const location = useLocation();
     const navigate = useNavigate();
-    const [email, setEmail] = useState("");
-    const [pass, setPass] = useState("");
-    const {isAuth} = useSelector(state=>state.Loginreducer);
+    const { isAuth } = useSelector(state => state.Loginreducer);
+    const [userInfo, setUserInfo] = useState({
+        email: "",
+        password: ""
+    })
 
-   
-   
-    const handleLogin = () => {
-        let data = {
-            email : email,
-            password: pass
-        }
-        dispatch(userlogindata(data))
+    const handelInputChange = (e) => {
+        const { name, value } = e.target
+        setUserInfo({ ...userInfo, [name]: value })
+    }
+    const handelSubmit = (e) => {
+        e.preventDefault()
+        dispatch(userlogindata(userInfo))
+            .then((r) => {
+                console.log(r)
+                if (r.payload.token) {
+                    toast({
+                        position: "top",
+                        title: r.payload.msg,
+                        status: 'success',
+                        duration: 9000,
+                        isClosable: true,
+                    })
+                    navigate("/")
+                } else {
+                    toast({
+                        position:"top",
+                        title:r.payload.msg,
+                        status: 'error',
+                        duration: 9000,
+                        isClosable: true,
+                      })
+                    navigate("/signup")
+                }
+            })
+        console.log(userInfo);
     }
 
 
-    useEffect(()=>{
-        if(isAuth){
-            navigate("/")
-        }
-    },[isAuth])
+    // useEffect(()=>{
+    //     if(isAuth){
+    //         navigate("/")
+    //     }
+    // },[isAuth])
     return (
-        <Flex
-            align={'center'}
-            justify={'center'}
-            bg={useColorModeValue('gray.50', 'gray.800')}>
-            <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
-                < Image width={"130px"} m={"auto"} mb={"-40px"} mt={"-40px"} src='https://i.ibb.co/PhgTtJL/amazon.png' alt='https://i.ibb.co/PhgTtJL/amazon.png' />
-                <Stack align={'center'}>
-                </Stack>
-                <Box
-                    rounded={'lg'}
-                    bg={useColorModeValue('white', 'gray.700')}
-                    boxShadow={'lg'}
-                    p={8}>
-                    <Text fontSize={"4xl"} mb={"4"}>Sign in</Text>
-                    <Stack spacing={4}>
-                        <FormControl id="email">
-                            <FormLabel>Email address</FormLabel>
-                            <Input type="email" value={email} onChange={e => setEmail(e.target.value)} />
-                        </FormControl>
-                        <FormControl id="password">
-                            <FormLabel>Password <Link fontWeight={"normal"} color={'blue.400'}>Forgot password?</Link></FormLabel>
-                            <Input type="password" value={pass} onChange={e => setPass(e.target.value)} />
-                        </FormControl>
-                        <Stack spacing={10}>
-                            <Stack
-                                direction={{ base: 'column', sm: 'row' }}
-                                align={'start'}
-                                justify={'space-between'}>
-                                <Checkbox>Remember me</Checkbox>
-                            </Stack>
-                            <Button
-                                onClick={handleLogin}
-                                bg={'linear-gradient(to bottom,#f7dfa5,#f0c14b)'}
-                                color={'black'}
-                                _hover={{
-                                    bg: 'linear-gradient(to bottom,#f7cb64,#ebb223)',
-                                }}>
-                                Sign in
-                            </Button>
-                            <Text color={'gray.600'} >
-                                By continuing, you agree to Amazon's <Link fontWeight={"normal"} color={"blue.400"}>Conditions of Use</Link> and <Link fontWeight={"normal"} color={"blue.400"}>Privacy Notice</Link>.
-                            </Text>
-                        </Stack>
-                    </Stack>
-                </Box>
-            </Stack>
-        </Flex>
+        <div style={{width:"40%",borderRadius:"10px" ,boxShadow: "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset", width: "25%", margin: "2rem auto", padding: "2rem" }}>
+            <form onSubmit={handelSubmit} style={{ display: "flex", flexDirection: "column" }}>
+                <label htmlFor="">Email</label>
+                <input style={{ border: "1px solid black", borderRadius:"5px", padding: "10px", marginBottom: "10px" }} placeholder='Enter email...' type="email" name="email" required id="" value={userInfo.email} onChange={handelInputChange} />
+                <label htmlFor="">Password</label>
+                <input style={{ border: "1px solid black",borderRadius:"5px", padding: "10px", marginBottom: "10px" }} placeholder='Enter password...' type="password" name="password" required id="" value={userInfo.password} onChange={handelInputChange} />
+                <input style={{ border: "1px solid black",borderRadius:"5px", padding: "10px", marginBottom: "10px", backgroundColor:'#fada5e' }}  type="submit" value="Sign In" />
+            </form>
+        </div>
+
     );
 }

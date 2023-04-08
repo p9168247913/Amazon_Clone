@@ -1,3 +1,7 @@
 export const LOGIN_DATA_REQUEST = "get/LOGINDATAREQUEST";
 export const LOGIN_DATA_SUCCESS = "post/LOGINDATASUCCESS";
 export const LOGIN_DATA_FALIURE = "err/LOGINDATAFALIURE";
+
+
+
+export const LOGOUT_USER = "LOGOUT/USER"
