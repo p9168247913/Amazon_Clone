@@ -5,6 +5,16 @@ const UserModel=require("../models/user.model")
 
 const userRouter=express.Router()
 
+userRouter.get('/', async(req,res)=>{
+    try {
+        const data = await UserModel.find()
+        res.send(data);
+    } catch (e) {
+        res.send(e)
+    }
+
+})
+
 userRouter.post("/register", async(req,res)=>{
     const {name, email, gender, password, age, city, is_married} = req.body
     console.log(req.body)
