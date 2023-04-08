@@ -1,12 +1,19 @@
-import { LOGIN_DATA_FALIURE, LOGIN_DATA_REQUEST, LOGIN_DATA_SUCCESS } from "./actiontypes"
+import { LOGIN_DATA_FALIURE, LOGIN_DATA_REQUEST, LOGIN_DATA_SUCCESS, LOGOUT_USER } from "./actiontypes";
+const initlogin  = JSON.parse(localStorage.getItem("isAuth")) || {
+    isError: false,
+    isLoading: false,
+    token: null,
+    isAuth: false,
+};
 
+/*
 const initlogin = {
     isError: false,
     isLoading: false,
     token: null,
     error: "",
-    isAuth: false,
-}
+    isAuth: auth,
+}*/
 export const Loginreducer = (state = initlogin, {type, payload}) => {
     switch (type) {
         case LOGIN_DATA_REQUEST: {
@@ -17,12 +24,37 @@ export const Loginreducer = (state = initlogin, {type, payload}) => {
             }
         }
         case LOGIN_DATA_SUCCESS: {
+            console.log("payload in reducer", payload);
+            localStorage.setItem("isAuth", JSON.stringify({
+                ...state,
+                isError: false,
+                isloading: false,
+                token: payload,
+                isAuth : true
+            }))
+            
             return {
                 ...state,
                 isError: false,
                 isloading: false,
                 token: payload,
                 isAuth : true
+            }
+        }
+        case LOGOUT_USER: {
+            localStorage.setItem("isAuth", JSON.stringify({
+                ...state,
+                isError: false,
+                isloading: false,
+                token: null,
+                isAuth : payload
+            }))
+            return {
+                ...state,
+                isError: false,
+                isloading: false,
+                token: null,
+                isAuth : payload
             }
         }
         case LOGIN_DATA_FALIURE: {
