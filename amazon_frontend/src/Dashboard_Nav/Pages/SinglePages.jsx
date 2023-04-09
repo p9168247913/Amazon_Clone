@@ -26,12 +26,14 @@ import { MdLocalShipping } from "react-icons/md";
 import { getSingleProduct, setCart } from "../../Redux/AppReducer/action";
 import axios from "axios";
 
-export function SinglePages() {
+export function SinglePages({category}) {
     const { id } = useParams();
+    console.log("id is", id);
     const [product, setProduct] = useState([]);
     const dispatch = useDispatch();
     useEffect(() => {
-        axios.get(`https://elated-lime-hippo.cyclic.app/products?id=${id}`).then(res => {
+        axios.get(`https://amazon-x3fk.onrender.com/${category}/${id}`).then(res => {
+            // console.log("res is", res.data);
             setProduct(res.data[0]);
         }).catch(err => {
             console.log(err);
@@ -39,7 +41,10 @@ export function SinglePages() {
     }, []);
     const sendproduct = () => {
         dispatch(setCart(product));
-    };
+    };    
+    https://amazon-x3fk.onrender.com
+
+    // console.log(product);
 
     return (
         <Container maxW={"7xl"}>
@@ -64,7 +69,7 @@ export function SinglePages() {
                         <Image
                             rounded={"md"}
                             alt={"product image"}
-                            src={product.imglink || product.img1}
+                            src={ product.img1}
                             fit={"cover"}
                             align={"center"}
                             w={"100%"}

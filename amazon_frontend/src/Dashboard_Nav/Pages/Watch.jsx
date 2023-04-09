@@ -26,8 +26,8 @@ function Watch() {
         }
     }
     useEffect(() => {
-        dispatch(getProduct("watches", paramsObj));
-        getBrands("watches",setUrlBrands);
+        dispatch(getProduct("watch", paramsObj));
+        getBrands("watch",setUrlBrands);
     }, [location.search]);
     if (loading) {
         return (
@@ -69,11 +69,12 @@ function Watch() {
                                         marginLeft={"40px"}
                                     >
                                         <ProductsCard
-                                            id={el.id}
+                                            id={el._id}
                                             image={el.imglink}
                                             name={el.name}
                                             price={el.MRP}
                                             brand={el.brand}
+                                            category  =  "watch"
                                         />
                                     </Card>
                                 );

@@ -17,17 +17,22 @@ function Television() {
     });
     const loading = useSelector(store => store.productReducer.isLoading);
     const error = useSelector(store => store.productReducer.isError);
-    const paramsObj = {
-        params: {
-            brand: searchParams.getAll("brand"),
-            _sort: searchParams.get("order") && "MRP",
-            _order: searchParams.get("order")
-        }
-    }
+
+
     useEffect(() => {
-        dispatch(getProduct("television", paramsObj));
-        getBrands("television", setUrlBrands);
-    }, [location.search]);
+        if (location || data.lenght === 0) {
+            const paramsObj = {
+                params: {
+                    brand: searchParams.getAll("brand"),
+                    _sort: searchParams.get("order") && "MRP",
+                    _order: searchParams.get("order")
+                }
+            }
+            dispatch(getProduct("telivision", paramsObj));
+            getBrands("telivision", setUrlBrands);
+        }
+
+    }, [location.search, data.length]);
     if (loading) {
         return (
             <div style={{ textAlign: "center", margin: "300px" }}>
@@ -68,11 +73,12 @@ function Television() {
                                         marginLeft={"40px"}
                                     >
                                         <ProductsCard
-                                            id={el.id}
+                                            id={el._id}
                                             image={el.imglink}
                                             name={el.name}
                                             price={el.MRP}
                                             brand={el.brand}
+                                            category="telivision"
                                         />
                                     </Card>
                                 );

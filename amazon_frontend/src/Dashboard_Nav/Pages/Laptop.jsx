@@ -10,13 +10,33 @@ import { useLocation, useSearchParams } from "react-router-dom";
 function Laptop() {
     const location = useLocation();
     const [searchParams] = useSearchParams();
-    const [urlBrands,setUrlBrands] = useState([]);
+    const [urlBrands, setUrlBrands] = useState([]);
     const dispatch = useDispatch();
     const data = useSelector((store) => {
         return store.productReducer.products;
     });
     const loading = useSelector(store => store.productReducer.isLoading);
     const error = useSelector(store => store.productReducer.isError);
+
+    const sort = localStorage.getItem("sort") || null
+    // function sort() {
+
+    // }
+
+    // function setData(order) {
+    //     // if(filtering.length ===0 ){
+    //     const sorted = [...ringData].sort((a, b) => {
+    //         if (order === "ascending") {
+    //             console.log("hello asc");
+    //             return a.MRP - b.MRP;
+    //         } else {
+    //             console.log("hello desc");
+    //             return b.MRP - a.MRP;
+    //         }
+    //     });
+    //     setRing(sorted);
+    //     setSortOrder(order);
+    // }
 
     const paramsObj = {
         params: {
@@ -27,7 +47,7 @@ function Laptop() {
     }
     useEffect(() => {
         dispatch(getProduct("laptop", paramsObj));
-        getBrands("laptop",setUrlBrands);
+        getBrands("laptop", setUrlBrands);
     }, [location.search]);
     if (loading) {
         return (
@@ -45,6 +65,7 @@ function Laptop() {
             </div>
         )
     }
+    console.log("urlBrands is", urlBrands);
     return (
         <>
             <Flex marginTop={"40px"}>
@@ -65,15 +86,16 @@ function Laptop() {
                                         _hover={{
                                             boxShadow: "2xl",
                                         }}
-                                        key={el.id}
+                                        key={el}
                                         marginLeft={"40px"}
                                     >
                                         <ProductsCard
-                                            id={el.id}
+                                            id={el._id}
                                             image={el.imglink}
                                             name={el.name}
                                             price={el.MRP}
                                             brand={el.brand}
+                                            category="laptop"
                                         />
                                     </Card>
                                 );

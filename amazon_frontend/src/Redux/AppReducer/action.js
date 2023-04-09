@@ -25,16 +25,20 @@ export const deleteCartProducts = (payload) => {
 }
 
 export const getProduct = (category, params) => (dispatch) => {
+    // console.log("category is ",category);
     dispatch(productRequest())
     console.log("Request")
-    axios.get(`https://elated-lime-hippo.cyclic.app/products?category=${category}`, params).then((res) => {
+    axios.get(`https://amazon-x3fk.onrender.com/${category}`, params).then((res) => {
+        console.log(res.data);
         dispatch(getProductSuccess(res.data))
-        console.log("success", params)
+        // console.log("success", params)
     })
         .catch((err) => {
             dispatch(productFailure())
         })
 }
+
+// https://amazon-x3fk.onrender.com/laptop
 
 export const getBrands = (category, setBrands) => {
     axios.get(`https://elated-lime-hippo.cyclic.app/products?category=${category}`).then((res) => {

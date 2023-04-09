@@ -15,7 +15,7 @@ export const Cart = () => {
     const handlePurchasing = (amount) => {
         navigate(`/pay?cost=${amount}`);
     }
-    const isAuth = useSelector(store => store.authReducer.isAuth);
+    const isAuth = useSelector(store => store.Loginreducer.isAuth);
     const handleDelete = (index) => {
         let items = [...cartItems];
         items.splice(index, 1);

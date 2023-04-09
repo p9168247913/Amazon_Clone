@@ -8,12 +8,18 @@ import { useEffect, useState } from "react";
 import { userLogout } from "../Redux/UserLogin/action";
 // import { set } from "mongoose";
 function Navbar() {
-   
+   const [text, setText] = useState("")
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { isAuth } = useSelector(state => state.Loginreducer);
     const handelLogOut = () => {
         dispatch(userLogout(false))
+    }
+
+    const handelClinking = () =>{
+        navigate(`/${text}`)
+        // console.log(text);
+        setText("")
     }
   
     return (
@@ -56,8 +62,8 @@ function Navbar() {
 
                 {/* <Link id="searchBarr" width={"100%"}> */}
                 <Box width={"95%"} display={"flex"} alignItems={"center"} justifyContent={"center"}>
-                    <Input  width={"90%"} height={"67%"} type={"search"} color={"white"} borderRightRadius={"none"} />
-                    <SearchIcon padding={"0.8%"} bg={"#febd69"} height={"67%"} width={"10%"} borderRightRadius={"4px"}  />
+                    <Input  width={"90%"} height={"67%"} type={"search"} color={"white"} borderRightRadius={"none"} value={text} onChange={e=>setText((e.target.value).toLowerCase())} />
+                    <SearchIcon padding={"0.8%"} bg={"#febd69"} height={"67%"} width={"10%"} borderRightRadius={"4px"}  onClick={handelClinking}/>
                 </Box>
                 {/* </Link> */}
             </Box>
@@ -68,7 +74,7 @@ function Navbar() {
 
                     {isAuth ?
                         <Link style={{ color: "white" }} onClick={() => handelLogOut()}>
-                            <Text fontSize={['10px', '10px', '15px', '20px']}>Sign Out</Text>
+                            <Text fontSize={['10px', '10px', '15px', '20px']}>Logout</Text>
                         </Link>
                         :
                         <Link to="/login" >
@@ -76,7 +82,7 @@ function Navbar() {
                         </Link>
                     }
                     <Link to="https://amazonagoraadmin.netlify.app/" >
-                        <Text fontSize={['10px', '10px', '15px', '20px']}>Admin Pannel</Text>
+                        <Text fontSize={['10px', '10px', '15px', '20px']} marginLeft={"10px"}>Admin</Text>
                     </Link>
 
                     <Link to="/cart" >
