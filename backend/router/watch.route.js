@@ -63,6 +63,7 @@ watchRouter.patch("/update/:id", async (req, res) => {
     } catch (e) {
         res.send({ "msg": e.message })
     }
+    
 })
 
 watchRouter.delete("/delete/:id", async (req, res) => {

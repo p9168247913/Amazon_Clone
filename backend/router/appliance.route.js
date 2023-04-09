@@ -32,6 +32,8 @@ applianceRouter.get("/", async (req, res) => {
             res.send(e)
         }
     }
+
+    
 })
 
 applianceRouter.get("/:id", async(req,res)=>{
@@ -66,6 +68,8 @@ applianceRouter.patch("/update/:id", async(req,res)=>{
         res.send({"msg":e.message})
     }
 })
+
+
 
 applianceRouter.delete("/delete/:id", async(req,res)=>{
     const id=req.params.id;
