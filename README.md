@@ -41,4 +41,4 @@ Amazon is an e-commerce website with multiple categories of products. We tried t
 
 <h2>Deployed Link</h2>
 
-[Agora](https://amazonagora.netlify.app/)
+[Agora](https://amazonagorashop.netlify.app/)
