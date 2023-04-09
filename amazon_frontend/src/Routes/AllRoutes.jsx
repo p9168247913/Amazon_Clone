@@ -26,7 +26,11 @@ export const AllRoutes = () => {
                 <Route path="/soundbar" element={<Soundbar />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/pay" element={<Payment />} />
-                <Route path={"/:id"} element={<PrivateRoute><SinglePages /> </PrivateRoute>} />
+                <Route path="/appliance/:id" element={<PrivateRoute><SinglePages category = "appliance" /> </PrivateRoute>} />
+                <Route path="/laptop/:id" element={<PrivateRoute><SinglePages category = "laptop" /> </PrivateRoute>} />
+                <Route path="/watch/:id" element={<PrivateRoute><SinglePages category = "watch" /> </PrivateRoute>} />
+                <Route path="/telivision/:id" element={<PrivateRoute><SinglePages category = "telivision" /> </PrivateRoute>} />
+                <Route path="/soundbar/:id" element={<PrivateRoute><SinglePages category = "soundbar" /> </PrivateRoute>} />
                 <Route path='/login' element={<Login />} />
                 <Route  path="/signup" element={<SignupPage/>}/>
                 <Route path="*" element={<h1>404 Page not found</h1>} />

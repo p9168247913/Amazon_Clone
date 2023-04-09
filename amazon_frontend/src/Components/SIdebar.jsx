@@ -26,6 +26,7 @@ export const SIdebar = ({ data }) => {
     const [urlBrands, urlSetBrands] = useState(initState || []);
     const handleSortPrice = (e) => {
         setOrder(e.target.value);
+        localStorage.setItem("sort", e.target.value)
     }
     const handleChange = (e) => {
         let value = e.target.value;
@@ -57,7 +58,7 @@ export const SIdebar = ({ data }) => {
         order && (params.order = order)
 
         setSearchParams(params)
-    }, [data, urlBrands, order]);
+    }, [data, urlBrands, order, setSearchParams]);
     return (
         <>
             <Box

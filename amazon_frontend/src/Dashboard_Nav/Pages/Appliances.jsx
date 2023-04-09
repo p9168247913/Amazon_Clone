@@ -24,9 +24,12 @@ function Appliancaes() {
             _order: searchParams.get("order")
         }
     }
+
+
+    console.log("urlBrands is", urlBrands);
     useEffect(() => {
-        dispatch(getProduct("appliances", paramsObj));
-        getBrands("appliances",setUrlBrands);
+        dispatch(getProduct("appliance", paramsObj));
+        getBrands("appliance",setUrlBrands);
     }, [location.search]);
     if (loading) {
         return (
@@ -68,11 +71,12 @@ function Appliancaes() {
                                         marginLeft={"40px"}
                                     >
                                         <ProductsCard
-                                            id={el.id}
+                                            id={el._id}
                                             image={el.imglink}
                                             name={el.name}
                                             price={el.MRP}
                                             brand={el.brand}
+                                            category  =  "appliance"
                                         />
                                     </Card>
                                 );

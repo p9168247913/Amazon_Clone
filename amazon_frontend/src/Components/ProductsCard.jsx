@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 
-export const ProductsCard = ({ id, image, price, brand, name }) => {
+export const ProductsCard = ({ id, image, price, brand, name, category }) => {
     return (
         <Flex
             spacing={4}
@@ -56,7 +56,7 @@ export const ProductsCard = ({ id, image, price, brand, name }) => {
                     </Text>
                 </Box>
                 <Box mt="auto">
-                    <Link to={`/${id}`}>
+                    <Link to={`/${category}/${id}`}>
                         <Button
                             background={"cyan.400"}
                             width={"100%"}

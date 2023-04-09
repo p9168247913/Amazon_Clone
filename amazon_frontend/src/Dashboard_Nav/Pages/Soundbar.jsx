@@ -26,8 +26,8 @@ function Soundbar() {
         }
     }
     useEffect(() => {
-        dispatch(getProduct("soundbars", paramsObj));
-        getBrands("soundbars",setUrlBrands);
+        dispatch(getProduct("soundbar", paramsObj));
+        getBrands("soundbar",setUrlBrands);
     }, [location.search]);
     if (loading) {
         return (
@@ -69,11 +69,12 @@ function Soundbar() {
                                         marginLeft={"40px"}
                                     >
                                         <ProductsCard
-                                            id={el.id}
+                                            id={el._id}
                                             image={el.imglink}
                                             name={el.name}
                                             price={el.MRP}
                                             brand={el.brand}
+                                            category  =  "soundbar"
                                         />
                                     </Card>
                                 );
