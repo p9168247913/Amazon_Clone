@@ -33,6 +33,16 @@ soundRouter.get("/", async (req, res) => {
     }
 })
 
+soundRouter.get("/:id", async(req,res)=>{
+    const id = req.params.id
+    try {
+        const data = await soundbarModel.find({_id:id})
+        res.send(data);
+    } catch (e) {
+        res.send(e)
+    }
+})
+
 soundRouter.post("/add", async (req, res) => {
     const payload = req.body
     try {

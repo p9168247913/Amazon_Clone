@@ -32,6 +32,16 @@ watchRouter.get("/", async (req, res) => {
     }
 })
 
+watchRouter.get("/:id", async(req,res)=>{
+    const id = req.params.id
+    try {
+        const data = await watchModel.find({_id:id})
+        res.send(data);
+    } catch (e) {
+        res.send(e)
+    }
+})
+
 watchRouter.post("/add", async (req, res) => {
     const payload = req.body
     try {
@@ -53,6 +63,7 @@ watchRouter.patch("/update/:id", async (req, res) => {
     } catch (e) {
         res.send({ "msg": e.message })
     }
+    
 })
 
 watchRouter.delete("/delete/:id", async (req, res) => {

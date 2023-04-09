@@ -32,6 +32,16 @@ telivisionRouter.get("/", async (req, res) => {
     }
 })
 
+telivisionRouter.get("/:id", async(req,res)=>{
+    const id = req.params.id
+    try {
+        const data = await telivisionModel.find({_id:id})
+        res.send(data);
+    } catch (e) {
+        res.send(e)
+    }
+})
+
 telivisionRouter.post("/add", async (req, res) => {
     const payload = req.body
     try {

@@ -34,6 +34,16 @@ laptopRouter.get("/", async (req, res) => {
     }
 })
 
+laptopRouter.get("/:id", async(req,res)=>{
+    const id = req.params.id
+    try {
+        const data = await laptopModel.find({_id:id})
+        res.send(data);
+    } catch (e) {
+        res.send(e)
+    }
+})
+
 laptopRouter.post("/add", async (req, res) => {
     const payload = req.body
     try {
