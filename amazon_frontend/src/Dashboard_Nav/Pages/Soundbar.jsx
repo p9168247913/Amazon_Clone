@@ -47,16 +47,16 @@ function Soundbar() {
     }
     return (
         <>
-            <Flex marginTop={"40px"}>
-                <SIdebar data={urlBrands} />
+            <Flex >
+                <SIdebar width="10%" data={urlBrands} />
 
                 <Box
                     // border={"2px solid green"}
-                    ml={"50px"}
+                    // ml={"50px"}
                     width={"75%"}
                     boxShadow="lg"
                 >
-                    <Grid gap={"20px"} m={"auto"} templateColumns="repeat(4, 1fr)">
+                    <Grid gap={"20px"} m={"auto"} templateColumns={["repeat(1,1fr)", "repeat(1,1fr)", "repeat(2,1fr)", "repeat(4, 1fr)"]}>
                         {data &&
                             data.map((el) => {
                                 return (
