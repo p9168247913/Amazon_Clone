@@ -41,4 +41,4 @@ Amazon is an e-commerce website with multiple categories of products. We tried t
 
 <h2>Deployed Link</h2>
 
-[Agora](https://amazonagorashop.netlify.app/)
+[Agora](https://amazon-clone-lovat-seven.vercel.app/)
