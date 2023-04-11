@@ -63,7 +63,7 @@ export const SIdebar = ({ data }) => {
         <>
             <Box
                 // marginLeft={"20px"}
-                width={["15%","15%","20%","20%"]}
+                width={["20%","15%","20%","20%"]}
                 // h={"400px"}
                 bg="gray.100"
                 boxShadow="lg"
@@ -83,9 +83,9 @@ export const SIdebar = ({ data }) => {
                 {brands.length > 0 &&
                     brands.map((e) => {
                         return (
-                            <Flex key={Math.random()} mb="1rem" alignItems="flex-start">
-                                <Checkbox onChange={handleChange} isChecked={urlBrands.includes(e)} value={e} size={"lg"} marginLeft="20px" borderColor="blue.500">
-                                    {e}
+                            <Flex key={Math.random()}  marginLeft={"0px"} alignItems="flex-start">
+                                <Checkbox onChange={handleChange} isChecked={urlBrands.includes(e)} value={e} size={["medium","medium","lg"]} marginLeft="20px" borderColor="blue.500">
+                                <Text fontSize={["10px", "10px", "20px","30px"]}>{e}</Text>
                                 </Checkbox>
                             </Flex>
                         );
