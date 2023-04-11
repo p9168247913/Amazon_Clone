@@ -54,7 +54,10 @@ export const SingleCartItem = ({ data, setCartTotal, current, handleDelete, inde
                         <option value={5}>Qty: 5</option>
                     </Select>
                     <p>|</p>
-                    <Text className="delsave" onClick={()=>handleDelete(index)} color={"teal"}>Delete</Text>
+                    {
+                        check ? <Text onClick={()=>alert("Please unckeck the Item")}>Delete</Text> : <Text className="delsave" onClick={()=>handleDelete(index)} color={"teal"}>Delete</Text>
+                        
+                    }
                     <p>|</p>
                     <Text className="delsave" color={"teal"} >Save for later</Text>
                 </div>

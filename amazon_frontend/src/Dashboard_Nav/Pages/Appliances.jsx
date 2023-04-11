@@ -1,4 +1,4 @@
-import { Box, Card, Flex, Grid, Text } from "@chakra-ui/react";
+import { Box, Card, Flex, Grid, Text, Button, Sidebar } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams, useSearchParams } from "react-router-dom";
@@ -7,9 +7,10 @@ import { SIdebar } from "../../Components/SIdebar";
 import { getBrands, getProduct } from "../../Redux/AppReducer/action";
 
 function Appliancaes() {
+    const [showSidebar, setShowSidebar] = useState(false)
     const location = useLocation();
     const [searchParams] = useSearchParams();
-    const [urlBrands,setUrlBrands] = useState([]);
+    const [urlBrands, setUrlBrands] = useState([]);
     const dispatch = useDispatch();
     const data = useSelector((store) => {
         return store.productReducer.products;
@@ -29,7 +30,7 @@ function Appliancaes() {
     console.log("urlBrands is", urlBrands);
     useEffect(() => {
         dispatch(getProduct("appliance", paramsObj));
-        getBrands("appliance",setUrlBrands);
+        getBrands("appliance", setUrlBrands);
     }, [location.search]);
     if (loading) {
         return (
@@ -49,16 +50,15 @@ function Appliancaes() {
     }
     return (
         <>
-            <Flex marginTop={"40px"}>
-                <SIdebar data={urlBrands} />
-
+            <Flex >
+                <SIdebar width="10%" data={urlBrands} />
                 <Box
                     // border={"2px solid green"}
-                    ml={"50px"}
-                    width={"75%"}
+                    // ml={"50px"}
+                    width={"90%"}
                     boxShadow="lg"
                 >
-                    <Grid gap={"20px"} m={"auto"} templateColumns="repeat(4, 1fr)">
+                    <Grid gap={"10px"} m={"auto"} templateColumns={["repeat(1,1fr)", "repeat(1,1fr)", "repeat(2,1fr)", "repeat(4, 1fr)"]}>
                         {data &&
                             data.map((el) => {
                                 return (
@@ -76,7 +76,7 @@ function Appliancaes() {
                                             name={el.name}
                                             price={el.MRP}
                                             brand={el.brand}
-                                            category  =  "appliance"
+                                            category="appliance"
                                         />
                                     </Card>
                                 );

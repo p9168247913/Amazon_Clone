@@ -63,16 +63,16 @@ export const SIdebar = ({ data }) => {
         <>
             <Box
                 // marginLeft={"20px"}
-                width={"260px"}
+                width={["20%","15%","20%","20%"]}
                 // h={"400px"}
                 bg="gray.100"
                 boxShadow="lg"
             >
-                <Heading marginTop={"20px"} fontSize="2xl" textColor={"cyan.800"}>
+                <Heading textAlign={"center"} fontSize={["13px", "13px", "20px","30px"]} margin={"auto"} marginTop={"20px"}  textColor={"cyan.800"}>
                     Filter
                 </Heading>
                 <Heading
-                    textAlign={"left"}
+                    textAlign={"center"}
                     marginTop="10px"
                     marginBottom={"10px"}
                     fontSize={"xl"}
@@ -83,17 +83,17 @@ export const SIdebar = ({ data }) => {
                 {brands.length > 0 &&
                     brands.map((e) => {
                         return (
-                            <Flex key={Math.random()} mb="1rem" alignItems="flex-start">
-                                <Checkbox onChange={handleChange} isChecked={urlBrands.includes(e)} value={e} size={"lg"} marginLeft="20px" borderColor="blue.500">
-                                    {e}
+                            <Flex key={Math.random()}  marginLeft={"0px"} alignItems="flex-start">
+                                <Checkbox onChange={handleChange} isChecked={urlBrands.includes(e)} value={e} size={["medium","medium","lg"]} marginLeft="20px" borderColor="blue.500">
+                                <Text fontSize={["10px", "10px", "20px","30px"]}>{e}</Text>
                                 </Checkbox>
                             </Flex>
                         );
                     })}
 
-                <Box width="250px" height="100vh" bg="gray.100">
+                <Box width={["60px", "60px", "70px", "220px"]} textAlign={"center"} margin={"auto"} height="100vh" bg="gray.100">
                     <Heading
-                        fontSize={"xl"}
+                        fontSize={["13px", "13px", "20px","30px"]}
                         textAlign="left"
                         textColor={"gray.500"}
                         mb="1.5rem"
@@ -101,16 +101,16 @@ export const SIdebar = ({ data }) => {
                     >
                         Sort By Price
                     </Heading>
-                    <RadioGroup defaultValue={order}>
-                        <VStack spacing="24px">
-                            <Radio borderColor="blue.500" onChange={handleSortPrice} name="order" value="asc" size="lg">
+                    <RadioGroup defaultValue={order} marginLeft={"none"}>
+                        <VStack spacing="24px" marginLeft={"0px"}>
+                            <Radio   borderColor="blue.500" onChange={handleSortPrice} name="order" value="asc" size={["40px","lg"]}>
                                 {/* <Text as="label" fontWeight="semibold"> */}
-                                Low to High
+                               <Text fontSize={["10px", "10px", "20px","30px"]}>Low to High</Text> 
                                 {/* </Text> */}
                             </Radio>
                             <Radio borderColor="blue.500" onChange={handleSortPrice} name="order" value="desc" size="lg">
                                 {/* <Text as="label" fontWeight="semibold"> */}
-                                High to Low
+                               <Text fontSize={["10px", "10px", "20px","30px"]}> High to Low</Text>
                                 {/* </Text> */}
                             </Radio>
                         </VStack>
