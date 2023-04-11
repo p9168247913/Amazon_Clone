@@ -1,4 +1,4 @@
-import { Box, Button, IconButton, Image, Radio, RadioGroup, Slide, Stack, Text, useDisclosure } from "@chakra-ui/react";
+import { Box, Button, IconButton, Image, Input, Radio, RadioGroup, Slide, Stack, TagLabel, Text, useDisclosure } from "@chakra-ui/react";
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom"
 import styled from "styled-components";
@@ -66,17 +66,17 @@ export const Payment = () => {
                         <div>
                             <Text fontWeight={"bold"} fontSize={"xl"} color="red.500">1 Select a delivery address</Text>
                             <DIV>
-                                <Text borderBottom={"1px solid rgb(198, 198, 198)"} fontWeight={"bold"} fontSize={"xl"}>Most recently used</Text>
-                                <RadioGroup mt={"20px"}>
-                                    <Stack>
-                                        <Radio value="1" ><b>Devansh Sharma</b> 3B, suraj marg, devgarh, KOTA, RAJASTHAN, 302163, India, Phone number: 8834895235</Radio>
-                                        <Radio value="2" ><b>Shankar Sharma</b> 445/1008, nandi colony, hanumangarh, AJMER, RAJASTHAN, 301108, India, Phone number: 6687988980</Radio>
-                                        <Radio value="3" ><b>Pinki Srinivas</b> 88A, sunshine road, devra, JODHPUR, RAJASTHAN, 300145, India, Phone number: 9878675323</Radio>
-                                    </Stack>
-                                </RadioGroup>
+                                <label htmlFor="">Name</label>
+                                <Input required placeholder="Enter Name" />
+                                <label htmlFor="">Address</label>
+                                <Input required placeholder="Enter Address" />
+                                <label htmlFor="">Pincode</label>
+                                <Input required placeholder="Enter Pincode" />
                                 <Button isDisabled={disabled} borderBottom={"1px solid rgb(198, 198, 198)"} height={"30px"} mt={"20px"} onClick={handleClick} colorScheme={"yellow"} backgroundColor={"#ffd814"}>Use this address</Button>
                             </DIV>
                         </div>
+
+                        
                     }
                     {payment ?
                         <div>
@@ -89,12 +89,16 @@ export const Payment = () => {
                                 <Text borderBottom={"1px solid rgb(198, 198, 198)"} fontWeight={"bold"} fontSize={"xl"}>Available payment methods</Text>
                                 <RadioGroup>
                                     <Stack>
-                                        <Radio value="1">Pay with Debit/Credit/ATM Cards<br />You can save your cards as per new RBI guidelines.
+                                        <Radio border={"1px solid black"} value="1">Pay with Debit/Credit/ATM Cards<br />You can save your cards as per new RBI guidelines.
                                         </Radio>
-                                        <Radio value="2">Net Banking</Radio>
-                                        <Radio value="3">Other UPI Apps</Radio>
-                                        <Radio value="4">EMI</Radio>
-                                        <Radio value="5">Cash On Delivery/Pay On Delivery<br />Scan & Pay using Amazon app. Cash, UPI, Cards also accepted.
+                                        <div display={"flex"} >
+                                            <Input width={"30%"} required border={"1px solid black"} marginLeft={"50px"}  placeholder="Enter 16 Digit card No." />
+                                            <Input width={"24%"} border={"1px solid black"} marginLeft={"20px"} placeholder="Enter 3 Digit CVV" />
+                                        </div >
+                                        <Radio border={"1px solid black"} value="2">Net Banking</Radio>
+                                        <Radio border={"1px solid black"} value="3">Other UPI Apps</Radio>
+                                        <Radio border={"1px solid black"} value="4">EMI</Radio>
+                                        <Radio border={"1px solid black"} value="5">Cash On Delivery/Pay On Delivery<br />Scan & Pay using Amazon app. Cash, UPI, Cards also accepted.
                                         </Radio>
                                     </Stack>
                                 </RadioGroup>
